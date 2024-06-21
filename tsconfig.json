@@ -1,0 +1,19 @@
+{
+  "extends": "@tsconfig/node18",
+  "compilerOptions": {
+    "rootDir": "src",
+    "outDir": "dist",
+    "module": "commonjs",
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "esModuleInterop": false,
+    "moduleResolution": null,
+    "declaration": true
+  },
+  "ts-node": {
+    "transpileOnly": true,
+    "esm": false,
+    "swc": true
+  },
+  "exclude": ["dist", "src/**/*.spec.ts", "src/test-utils.ts"]
+}
