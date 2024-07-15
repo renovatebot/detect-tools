@@ -52,7 +52,7 @@ importers:
         specifier: ^6.2.0
         version: 6.2.2
       rimraf:
-        specifier: ^5.0.0
+        specifier: 5.0.9
         version: 5.0.9
       ts-jest:
         specifier: ^29.1.0
