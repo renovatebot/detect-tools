@@ -49,7 +49,7 @@ importers:
         specifier: ^29.7.0
         version: 29.7.0(@types/node@20.14.10)
       npm-run-all2:
-        specifier: ^6.2.0
+        specifier: 6.2.2
         version: 6.2.2
       rimraf:
         specifier: ^5.0.0
