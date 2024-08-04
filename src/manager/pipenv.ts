@@ -53,7 +53,7 @@ const PipenvConstraintObject = z
   .nullable()
   .catch(null);
 
-const PipfileLock = Json.pipe(
+export const PipfileLock = Json.pipe(
   z.object({
     _meta: PythonConstraintObject,
     default: PipenvConstraintObject,
@@ -75,6 +75,7 @@ const PipfileLock = Json.pipe(
     pipenvDefault: null,
     pipenvDevelop: null,
   });
+export type PipfileLock = z.infer<typeof PipfileLock>;
 
 const PipenvConstraint = z
   .object({
