@@ -186,5 +186,27 @@ describe('pipenv', () => {
       const res = await pipenv.getPipenvConstraint('/path/to/folder');
       expect(res).toBe('');
     });
+
+    it('gets pipenv constraint from Pipenv `packages` section', async () => {
+      mockFs(fs, {
+        '/path/to/folder/Pipfile': codeBlock`
+          [packages]
+          pipenv = "==2020.8.13"
+        `,
+      });
+      const res = await pipenv.getPipenvConstraint('/path/to/folder');
+      expect(res).toBe('==2020.8.13');
+    });
+
+    it('gets pipenv constraint from Pipenv `dev-packages` section', async () => {
+      mockFs(fs, {
+        '/path/to/folder/Pipfile': codeBlock`
+          [dev-packages]
+          pipenv = "==2020.8.13"
+        `,
+      });
+      const res = await pipenv.getPipenvConstraint('/path/to/folder');
+      expect(res).toBe('==2020.8.13');
+    });
   });
 });
