@@ -4,10 +4,25 @@ import { readFile } from '../fs';
 
 const PythonConstraintObject = z
   .object({
-    requires: z.object({
-      python_version: z.string().nullable().catch(null),
-      python_full_version: z.string().nullable().catch(null),
-    }),
+    requires: z
+      .object({
+        python_version: z.string().nullable().catch(null),
+        python_full_version: z.string().nullable().catch(null),
+      })
+      .catch({
+        python_version: null,
+        python_full_version: null,
+      }),
+    packages: z
+      .object({
+        pipenv: z.string().nullable(),
+      })
+      .catch({ pipenv: null }),
+    'dev-packages': z
+      .object({
+        pipenv: z.string().nullable(),
+      })
+      .catch({ pipenv: null }),
   })
   .transform(
     ({
@@ -15,9 +30,21 @@ const PythonConstraintObject = z
         python_version: pythonVersion,
         python_full_version: pythonFullVersion,
       },
-    }) => ({ pythonVersion, pythonFullVersion }),
+      packages: { pipenv: pipenvDefault },
+      'dev-packages': { pipenv: pipenvDevelop },
+    }) => ({
+      pythonVersion,
+      pythonFullVersion,
+      pipenvDefault,
+      pipenvDevelop,
+    }),
   )
-  .catch({ pythonVersion: null, pythonFullVersion: null });
+  .catch({
+    pythonVersion: null,
+    pythonFullVersion: null,
+    pipenvDefault: null,
+    pipenvDevelop: null,
+  });
 
 const PythonConstraint = z
   .object({
@@ -118,10 +145,15 @@ const PipenvConstraint = z
         }
       }
 
-      return '';
+      return null;
     },
   )
-  .catch('');
+  .nullable()
+  .catch(null);
+
+const PipfilePipenvConstraint = Toml.pipe(PythonConstraintObject)
+  .pipe(PipenvConstraint)
+  .catch(null);
 
 export async function getPythonConstraint(
   path: string,
@@ -152,8 +184,18 @@ export async function getPythonConstraint(
 }
 
 export async function getPipenvConstraint(path: string): Promise<string> {
+  const pipfileContent = await readFile(path, 'Pipfile');
+  const pipenvConstraint = PipfilePipenvConstraint.parse(pipfileContent);
+  if (pipenvConstraint) {
+    return pipenvConstraint;
+  }
+
   const lockfileContent = await readFile(path, 'Pipfile.lock');
-  const pipenvConstraint =
+  const pipenvLockfileConstraint =
     PipfileLock.pipe(PipenvConstraint).parse(lockfileContent);
-  return pipenvConstraint;
+  if (pipenvLockfileConstraint) {
+    return pipenvLockfileConstraint;
+  }
+
+  return '';
 }
