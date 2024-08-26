@@ -7,7 +7,7 @@ export async function readFile(
 ): Promise<string | null> {
   try {
     const fullPath = join(path, file);
-    return fsReadFile(fullPath, 'utf8');
+    return await fsReadFile(fullPath, 'utf8');
   } catch (_) {
     return null;
   }
