@@ -25,9 +25,9 @@ jobs:
           os: ${{ runner.os }}
 
       - name: Build
-        run: npm run build
+        run: pnpm run build
 
       - name: Publish
-        run: npm publish --verbose --provenance --access public
+        run: pnpm publish --verbose --provenance --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

@@ -33,5 +33,5 @@ jobs:
           os: ${{ runner.os }}
 
       - name: Test
-        run: npm test
+        run: pnpm test
         shell: bash
