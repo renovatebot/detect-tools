@@ -1,7 +1,7 @@
 {
   "name": "@renovatebot/detect-tools",
   "version": "0.0.0-semantic-release",
-  "license": "MIT",
+  "license": "AGPL-3.0-only",
   "type": "commonjs",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
