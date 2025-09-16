@@ -13,6 +13,24 @@ env:
   NODE_VERSION: 18
 
 jobs:
+  lint:
+    runs-on: ubuntu-24.04
+
+    steps:
+      - name: Setup Node and install dependencies
+        uses: ./.github/actions/setup-node
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          os: ${{ runner.os }}
+
+      - run: pnpm build
+
+      # TODO: fix eslint issues
+      # - run: pnpm eslint -f gha
+
+      # TODO: add prettier
+      # - run: pnpm prettier
+
   test:
     strategy:
       matrix:
@@ -35,3 +53,31 @@ jobs:
       - name: Test
         run: pnpm test
         shell: bash
+
+      - name: Codecov
+        if: matrix.os == 'ubuntu-latest'
+        uses: codecov/codecov-action@5a1091511ad55cbe89839c7260b706298ca349f7 # v5.5.1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          verbose: true
+
+ # Catch-all required check for test matrix
+  success:
+    needs:
+      - lint
+      - test
+    runs-on: ubuntu-24.04
+    timeout-minutes: 1
+    if: always()
+    steps:
+      - name: Fail for failed or cancelled lint tests
+        if: |
+          needs.lint.result == 'failure' ||
+          needs.lint.result == 'cancelled'
+        run: exit 1
+
+      - name: Fail for failed or cancelled test tests
+        if: |
+          needs.test.result == 'failure' ||
+          needs.test.result == 'skipped'
+        run: exit 1

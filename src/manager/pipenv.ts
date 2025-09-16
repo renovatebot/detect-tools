@@ -124,6 +124,7 @@ const PipenvConstraint = z
       if (pythonFullVersion) {
         // python_full_version was added after 3.6 was already deprecated, so it should be impossible to have a 3.6 version
         // https://github.com/pypa/pipenv/blob/main/CHANGELOG.md#2022109-2022-10-09
+        /* istanbul ignore else */
         if (pythonFullVersion.startsWith('3.7.')) {
           // Python 3.7 support was dropped in pipenv 2023.10.20
           // https://github.com/pypa/pipenv/blob/main/CHANGELOG.md#20231020-2023-10-20
@@ -132,6 +133,7 @@ const PipenvConstraint = z
       }
 
       // Before 2022.10.9, only the major.minor version was included
+      /* istanbul ignore else */
       if (pythonVersion) {
         if (pythonVersion === '3.6') {
           // Python 3.6 was deprecated in 2022.4.20
