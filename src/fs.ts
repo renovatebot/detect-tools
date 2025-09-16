@@ -8,7 +8,7 @@ export async function readFile(
   try {
     const fullPath = join(path, file);
     return await fsReadFile(fullPath, 'utf8');
-  } catch (_) {
+  } catch {
     return null;
   }
 }
