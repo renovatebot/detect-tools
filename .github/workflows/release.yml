@@ -15,8 +15,15 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@08eba0b27e820071cde6df949e0beb9ba4906955 # v4.3.0
+        with:
+          fetch-depth: 0 # zero stands for full checkout, which is required for semantic-release
+          filter: blob:none # we don't need all blobs, only the full tree
+          show-progress: false
+          
       - uses: containerbase/internal-tools/setup@1512f33187f6f55360f519853e7b247084e2970f # v3.10.88
         with:
+          checkout: false
           node-version: ${{ env.NODE_VERSION }}
 
       - name: Build
