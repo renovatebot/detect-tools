@@ -57,6 +57,14 @@ jobs:
           - windows-latest
         node:
          - 18
+        include:
+            # too slow and too many tests to run them on all os
+          - os: ubuntu-latest
+            node: 20
+          - os: ubuntu-latest
+            node: 22
+          - os: ubuntu-latest
+            node: 24
 
     runs-on: ${{ matrix.os }}
 
