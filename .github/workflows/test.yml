@@ -28,8 +28,7 @@ jobs:
 
       - run: pnpm build
 
-      # TODO: fix eslint issues
-      # - run: pnpm eslint -f gha
+      - run: pnpm eslint -f gha
 
       # TODO: add prettier
       # - run: pnpm prettier
