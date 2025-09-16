@@ -9,7 +9,7 @@ importers:
   .:
     dependencies:
       fs-extra:
-        specifier: ^11.3.1
+        specifier: ^11.3.2
         version: 11.3.2
       toml-eslint-parser:
         specifier: ^0.10.0
