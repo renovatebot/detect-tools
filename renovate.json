@@ -1,9 +1,12 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": [
-    "config:recommended"
-  ],
-  "npm": {
-    "rangeStrategy": "replace"
-  }
+  "extends": ["github>renovatebot/.github"],
+  "prCreation": "immediate",
+  "automergeType": "pr",
+  "packageRules": [
+    {
+      "matchDepTypes": ["dependencies"],
+      "rangeStrategy": "bump"
+    }
+  ]
 }
