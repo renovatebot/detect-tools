@@ -1,5 +1,9 @@
+/* globals process */
+
+const ci = !!process.env.CI;
+
 /** @type {import('ts-jest').JestConfigWithTsJest} */
-module.exports = {
+export default {
   preset: 'ts-jest',
   testEnvironment: 'node',
   coverageDirectory: './.coverage/',
@@ -11,4 +15,10 @@ module.exports = {
       statements: 100,
     },
   },
+  reporters: ci
+    ? [['github-actions', { silent: false }], 'summary']
+    : ['default'],
+  coverageReporters: ci
+    ? ['text-summary', 'lcovonly']
+    : ['text-summary', 'html'],
 };
