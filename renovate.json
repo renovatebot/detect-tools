@@ -3,7 +3,6 @@
   "extends": ["github>renovatebot/.github"],
   "prCreation": "immediate",
   "automergeType": "pr",
-  "platformAutomerge": false,
   "packageRules": [
     {
       "matchDepTypes": ["dependencies"],
