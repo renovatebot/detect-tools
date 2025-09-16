@@ -15,14 +15,9 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
-
-      - name: Setup Node and install dependencies
-        uses: ./.github/actions/setup-node
+      - uses: containerbase/internal-tools/setup@1512f33187f6f55360f519853e7b247084e2970f # v3.10.88
         with:
           node-version: ${{ env.NODE_VERSION }}
-          os: ${{ runner.os }}
 
       - name: Build
         run: pnpm run build
