@@ -16,7 +16,7 @@ export default {
     },
   },
   reporters: ci
-    ? [['github-actions', { silent: false }], 'summary']
+    ? [['github-actions', { silent: false }], 'summary', 'jest-junit']
     : ['default'],
   coverageReporters: ci
     ? ['text-summary', 'lcovonly']

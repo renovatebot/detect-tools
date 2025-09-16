@@ -130,3 +130,4 @@ dist
 .pnp.*
 
 .coverage
+junit.xml
