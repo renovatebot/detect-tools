@@ -146,6 +146,8 @@ jobs:
             echo "DRY_RUN=false" >> "$GITHUB_ENV"
           fi
 
+      - run: pnpm build
+
       - name: semantic-release
         run: |
           pnpm semantic-release --dry-run ${{env.DRY_RUN}}
