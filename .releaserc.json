@@ -6,7 +6,7 @@
       "@semantic-release/github",
       {
         "releasedLabels": false,
-        "successComment": false
+        "successCommentCondition": false
       }
     ],
     "@containerbase/semantic-release-pnpm"    
