@@ -5,7 +5,7 @@ import { mockFs } from '../test-utils';
 
 jest.mock('../fs');
 
-describe('pipenv', () => {
+describe('manager/pipenv', () => {
   beforeEach(() => {
     jest.clearAllMocks();
   });
