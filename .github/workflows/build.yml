@@ -52,21 +52,21 @@ jobs:
     strategy:
       matrix:
         os:
-          - ubuntu-latest
-          - macos-latest
-          - windows-latest
+          - ubuntu
+          - macos
+          - windows
         node:
          - 18
         include:
             # too slow and too many tests to run them on all os
-          - os: ubuntu-latest
+          - os: ubuntu
             node: 20
-          - os: ubuntu-latest
+          - os: ubuntu
             node: 22
-          - os: ubuntu-latest
+          - os: ubuntu
             node: 24
 
-    runs-on: ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}-latest
 
     name: test-${{ matrix.os }}-${{ matrix.node }}
 
