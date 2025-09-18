@@ -9,7 +9,7 @@
         "successComment": false
       }
     ],
-    "@semantic-release/npm"    
+    "@containerbase/semantic-release-pnpm"    
   ],
   "analyzeCommits": {
     "releaseRules": [

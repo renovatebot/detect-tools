@@ -21,6 +21,7 @@
     "zod": "^3.25.76"
   },
   "devDependencies": {
+    "@containerbase/semantic-release-pnpm": "1.2.1",
     "@eslint/js": "9.35.0",
     "@jest/globals": "30.1.2",
     "@tsconfig/node18": "18.2.4",
@@ -41,18 +42,5 @@
     "typescript": "5.9.2",
     "typescript-eslint": "8.44.0"
   },
-  "packageManager": "pnpm@10.16.1",
-  "pnpm": {
-    "supportedArchitectures": {
-      "cpu": [
-        "x64",
-        "arm64"
-      ],
-      "os": [
-        "win32",
-        "linux",
-        "darwin"
-      ]
-    }
-  }
+  "packageManager": "pnpm@10.16.1"
 }
