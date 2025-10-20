@@ -94,8 +94,8 @@ importers:
         specifier: 29.4.5
         version: 29.4.5(@babel/core@7.28.4)(@jest/transform@30.2.0)(@jest/types@30.2.0)(babel-jest@30.2.0(@babel/core@7.28.4))(jest-util@30.2.0)(jest@30.2.0(@types/node@24.8.1))(typescript@5.9.3)
       type-fest:
-        specifier: 5.0.1
-        version: 5.0.1
+        specifier: 5.1.0
+        version: 5.1.0
       typescript:
         specifier: 5.9.3
         version: 5.9.3
@@ -3143,8 +3143,8 @@ packages:
     resolution: {integrity: sha512-TeTSQ6H5YHvpqVwBRcnLDCBnDOHWYu7IvGbHT6N8AOymcr9PJGjc1GTtiWZTYg0NCgYwvnYWEkVChQAr9bjfwA==}
     engines: {node: '>=16'}
 
-  type-fest@5.0.1:
-    resolution: {integrity: sha512-9MpwAI52m8H6ssA542UxSLnSiSD2dsC3/L85g6hVubLSXd82wdI80eZwTWhdOfN67NlA+D+oipAs1MlcTcu3KA==}
+  type-fest@5.1.0:
+    resolution: {integrity: sha512-wQ531tuWvB6oK+pchHIu5lHe5f5wpSCqB8Kf4dWQRbOYc9HTge7JL0G4Qd44bh6QuJCccIzL3bugb8GI0MwHrg==}
     engines: {node: '>=20'}
 
   typed-array-buffer@1.0.3:
@@ -6833,7 +6833,7 @@ snapshots:
 
   type-fest@4.41.0: {}
 
-  type-fest@5.0.1:
+  type-fest@5.1.0:
     dependencies:
       tagged-tag: 1.0.0
 
