@@ -22,7 +22,7 @@
   },
   "devDependencies": {
     "@containerbase/eslint-plugin": "1.1.16",
-    "@containerbase/semantic-release-pnpm": "1.2.8",
+    "@containerbase/semantic-release-pnpm": "1.2.9",
     "@eslint/js": "9.38.0",
     "@jest/globals": "30.2.0",
     "@tsconfig/node18": "18.2.4",
