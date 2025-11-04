@@ -74,7 +74,7 @@ jobs:
       id-token: write
 
     env:
-      coverage: ${{ matrix.os == 'ubuntu-latest' && matrix.node == 22 }}
+      coverage: ${{ matrix.os == 'ubuntu' && matrix.node == 22 }}
 
     steps:
       - uses: containerbase/internal-tools/setup@69f55a49290fc42c3925a0074a6219d37420b3bb # v3.14.12
