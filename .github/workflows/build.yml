@@ -70,6 +70,12 @@ jobs:
 
     name: test-${{ matrix.os }}-${{ matrix.node }}
 
+    permissions:
+      id-token: write
+
+    env:
+      coverage: ${{ matrix.os == 'ubuntu-latest' && matrix.node-version == 22 }}
+
     steps:
       - uses: containerbase/internal-tools/setup@69f55a49290fc42c3925a0074a6219d37420b3bb # v3.14.12
         with:
@@ -77,20 +83,23 @@ jobs:
           node-version: ${{ matrix.node }}
 
       - name: Test
-        run: pnpm test
+        run: pnpm test --ci --coverage ${{ env.coverage }} --logHeapUsage
         shell: bash
 
-      - name: Codecov
-        if: matrix.os == 'ubuntu-latest' && matrix.node == '18'
+      - name: Codecov coverage results
+        if: github.event_name != 'merge_group'
         uses: codecov/codecov-action@5a1091511ad55cbe89839c7260b706298ca349f7 # v5.5.1
         with:
-          token: ${{ secrets.CODECOV_TOKEN }}
+          use_oidc: true
+          flags: node${{ matrix.node }}, ${{ runner.os }}
 
-      - name: Upload test results to Codecov
-        if: true != cancelled()
+      - name: Codecov test results
+        if: github.event_name != 'merge_group' && !cancelled()
         uses: codecov/test-results-action@47f89e9acb64b76debcd5ea40642d25a4adced9f # v1.1.1
         with:
-          token: ${{ secrets.CODECOV_TOKEN }}
+          use_oidc: true
+          flags: node${{ matrix.node }}, ${{ runner.os }}
+
 
   # Catch-all required check for test matrix
   success:

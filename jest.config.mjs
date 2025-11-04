@@ -8,6 +8,8 @@ const ci = !!process.env.CI;
 export default {
   ...createDefaultPreset(),
   testEnvironment: 'node',
+  collectCoverage: true,
+  coverageProvider: 'v8',
   coverageDirectory: './.coverage/',
   coverageThreshold: {
     './src/manager': {

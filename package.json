@@ -12,7 +12,7 @@
   "scripts": {
     "clean": "rimraf dist",
     "build": "tsc -b ./tsconfig.json",
-    "test": "jest --coverage=true"
+    "test": "jest"
   },
   "dependencies": {
     "fs-extra": "^11.3.2",
