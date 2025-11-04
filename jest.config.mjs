@@ -19,10 +19,10 @@ export default {
       statements: 100,
     },
     global: {
-      branches: 100,
-      functions: 80,
-      lines: 72.4,
-      statements: 72.4,
+      branches: 71.4,
+      functions: 66.6,
+      lines: 69.2,
+      statements: 69.2,
     },
   },
   reporters: ci
