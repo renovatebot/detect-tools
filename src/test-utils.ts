@@ -13,4 +13,3 @@ export function mockFs(
 
   fsMod.readFile.mockImplementation(readFile);
 }
-

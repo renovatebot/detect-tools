@@ -1,0 +1,23 @@
+node_modules/
+.vs/
+*.tsbuildinfo
+bin/
+dist/
+coverage/
+*.log
+
+.editorconfig
+.*ignore
+.npmrc
+
+
+# Pnpm
+/.pnpm-store/
+pnpm-lock.yaml
+
+# gradle
+.gradle/
+build/
+
+# dotnet
+packages.lock.json

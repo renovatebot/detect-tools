@@ -1,5 +1,5 @@
 strictPeerDependencies: true
-
+saveExact: true
 
 ignoredBuiltDependencies:
   - unrs-resolver

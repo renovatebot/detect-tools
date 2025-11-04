@@ -45,8 +45,7 @@ jobs:
 
       - run: pnpm eslint -f gha
 
-      # TODO: add prettier
-      # - run: pnpm prettier
+      - run: pnpm prettier
 
   test:
     strategy:
@@ -56,9 +55,9 @@ jobs:
           - macos
           - windows
         node:
-         - 22
+          - 22
         include:
-            # too slow and too many tests to run them on all os
+          # too slow and too many tests to run them on all os
           - os: ubuntu
             node: 20
           - os: ubuntu
@@ -97,7 +96,6 @@ jobs:
         with:
           use_oidc: true
           flags: node${{ matrix.node }}-${{ runner.os }}
-
 
   # Catch-all required check for test matrix
   success:

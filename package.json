@@ -12,6 +12,8 @@
   "scripts": {
     "clean": "rimraf dist",
     "build": "tsc -b ./tsconfig.json",
+    "prettier": "PRETTIER_EXPERIMENTAL_CLI=1 prettier -c -u .",
+    "prettier:fix": "PRETTIER_EXPERIMENTAL_CLI=1 prettier -w -u .",
     "test": "jest"
   },
   "dependencies": {
@@ -42,6 +44,8 @@
     "jest": "30.2.0",
     "jest-junit": "16.0.0",
     "npm-run-all2": "8.0.4",
+    "prettier": "3.6.2",
+    "prettier-plugin-packagejson": "2.5.19",
     "rimraf": "6.0.1",
     "semantic-release": "24.2.9",
     "ts-jest": "29.4.5",
