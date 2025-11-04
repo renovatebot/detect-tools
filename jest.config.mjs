@@ -12,17 +12,11 @@ export default {
   coverageProvider: 'v8',
   coverageDirectory: './.coverage/',
   coverageThreshold: {
-    './src/manager': {
+    global: {
       branches: 100,
       functions: 100,
       lines: 100,
       statements: 100,
-    },
-    global: {
-      branches: 71.4,
-      functions: 66.6,
-      lines: 69.2,
-      statements: 69.2,
     },
   },
   reporters: ci
