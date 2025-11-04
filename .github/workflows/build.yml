@@ -56,13 +56,11 @@ jobs:
           - macos
           - windows
         node:
-         - 18
+         - 22
         include:
             # too slow and too many tests to run them on all os
           - os: ubuntu
             node: 20
-          - os: ubuntu
-            node: 22
           - os: ubuntu
             node: 24
 
