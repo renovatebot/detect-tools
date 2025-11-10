@@ -23,7 +23,7 @@
     "zod": "^3.25.76"
   },
   "devDependencies": {
-    "@containerbase/eslint-plugin": "1.1.17",
+    "@containerbase/eslint-plugin": "1.1.18",
     "@containerbase/semantic-release-pnpm": "1.3.2",
     "@eslint/js": "9.39.0",
     "@jest/globals": "30.2.0",
