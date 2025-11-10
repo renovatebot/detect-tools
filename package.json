@@ -51,7 +51,7 @@
     "ts-jest": "29.4.5",
     "type-fest": "5.2.0",
     "typescript": "5.9.3",
-    "typescript-eslint": "8.46.2"
+    "typescript-eslint": "8.46.3"
   },
   "packageManager": "pnpm@10.20.0"
 }
