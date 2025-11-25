@@ -34,8 +34,8 @@ importers:
         specifier: 30.2.0
         version: 30.2.0
       '@tsconfig/node18':
-        specifier: 18.2.5
-        version: 18.2.5
+        specifier: 18.2.6
+        version: 18.2.6
       '@types/common-tags':
         specifier: 1.8.4
         version: 1.8.4
@@ -625,8 +625,8 @@ packages:
   '@sinonjs/fake-timers@13.0.5':
     resolution: {integrity: sha512-36/hTbH2uaWuGVERyC6da9YwGWnzUZXuPro/F2LfsdOsLnCojz/iSH8MxUt/FD2S5XBSVPhmArFUXcpCQ2Hkiw==}
 
-  '@tsconfig/node18@18.2.5':
-    resolution: {integrity: sha512-nQicUR0hKCXwCTVByBMPKm+lWH4B+IquC9Y1KEe4oujGVFFKGTIpAFz5z/AwJooSocVAuTSWTe/7ey1nU+xrlA==}
+  '@tsconfig/node18@18.2.6':
+    resolution: {integrity: sha512-eAWQzAjPj18tKnDzmWstz4OyWewLUNBm9tdoN9LayzoboRktYx3Enk1ZXPmThj55L7c4VWYq/Bzq0A51znZfhw==}
 
   '@tybys/wasm-util@0.10.1':
     resolution: {integrity: sha512-9tTaPJLSiejZKx+Bmog4uSubteqTvFrVrURwkmHixBo0G4seD0zUxp98E1DzUBJxLQ3NPwXrGKDiVjwx/DpPsg==}
@@ -4163,7 +4163,7 @@ snapshots:
     dependencies:
       '@sinonjs/commons': 3.0.1
 
-  '@tsconfig/node18@18.2.5': {}
+  '@tsconfig/node18@18.2.6': {}
 
   '@tybys/wasm-util@0.10.1':
     dependencies:
