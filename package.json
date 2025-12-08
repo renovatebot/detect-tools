@@ -48,7 +48,7 @@
     "prettier-plugin-packagejson": "2.5.20",
     "rimraf": "6.1.2",
     "semantic-release": "25.0.2",
-    "ts-jest": "29.4.5",
+    "ts-jest": "29.4.6",
     "type-fest": "5.2.0",
     "typescript": "5.9.3",
     "typescript-eslint": "8.48.0"
