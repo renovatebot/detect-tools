@@ -17,7 +17,7 @@
     "test": "jest"
   },
   "dependencies": {
-    "fs-extra": "^11.3.2",
+    "fs-extra": "^11.3.3",
     "toml-eslint-parser": "^0.10.1",
     "upath": "^2.0.1",
     "zod": "^3.25.76"
