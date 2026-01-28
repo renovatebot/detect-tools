@@ -27,7 +27,7 @@
     "@containerbase/semantic-release-pnpm": "1.3.17",
     "@eslint/js": "9.39.2",
     "@jest/globals": "30.2.0",
-    "@tsconfig/node18": "18.2.6",
+    "@tsconfig/node20": "20.1.0",
     "@types/common-tags": "1.8.4",
     "@types/fs-extra": "11.0.4",
     "@types/jest": "30.0.0",
