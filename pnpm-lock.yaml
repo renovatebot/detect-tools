@@ -33,9 +33,9 @@ importers:
       '@jest/globals':
         specifier: 30.2.0
         version: 30.2.0
-      '@tsconfig/node18':
-        specifier: 18.2.6
-        version: 18.2.6
+      '@tsconfig/node20':
+        specifier: 20.1.0
+        version: 20.1.0
       '@types/common-tags':
         specifier: 1.8.4
         version: 1.8.4
@@ -613,8 +613,8 @@ packages:
   '@sinonjs/fake-timers@13.0.5':
     resolution: {integrity: sha512-36/hTbH2uaWuGVERyC6da9YwGWnzUZXuPro/F2LfsdOsLnCojz/iSH8MxUt/FD2S5XBSVPhmArFUXcpCQ2Hkiw==}
 
-  '@tsconfig/node18@18.2.6':
-    resolution: {integrity: sha512-eAWQzAjPj18tKnDzmWstz4OyWewLUNBm9tdoN9LayzoboRktYx3Enk1ZXPmThj55L7c4VWYq/Bzq0A51znZfhw==}
+  '@tsconfig/node20@20.1.0':
+    resolution: {integrity: sha512-7Yz1xDv3sot8+NwiYA8wkx60qr3Tr+soJwlqVQSkiEqqgYoNmMmqSPiYs1vMmTxneB3igHAD11dGOR2+BShzTA==}
 
   '@tybys/wasm-util@0.10.1':
     resolution: {integrity: sha512-9tTaPJLSiejZKx+Bmog4uSubteqTvFrVrURwkmHixBo0G4seD0zUxp98E1DzUBJxLQ3NPwXrGKDiVjwx/DpPsg==}
@@ -4069,7 +4069,7 @@ snapshots:
     dependencies:
       '@sinonjs/commons': 3.0.1
 
-  '@tsconfig/node18@18.2.6': {}
+  '@tsconfig/node20@20.1.0': {}
 
   '@tybys/wasm-util@0.10.1':
     dependencies:
