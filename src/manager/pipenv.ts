@@ -1,4 +1,4 @@
-import { z } from 'zod';
+import { z } from 'zod/v3';
 import { Json, Toml } from '../schema';
 import { readFile } from '../fs';
 
