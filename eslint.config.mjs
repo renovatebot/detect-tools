@@ -1,7 +1,7 @@
 // @ts-check
 
 import js from '@eslint/js';
-import { defineConfig } from 'eslint/config';
+import { defineConfig, globalIgnores } from 'eslint/config';
 import tseslint from 'typescript-eslint';
 import pluginPromise from 'eslint-plugin-promise';
 import eslintJestPlugin from 'eslint-plugin-jest';
@@ -12,9 +12,7 @@ import * as importX from 'eslint-plugin-import-x';
 import globals from 'globals';
 
 export default defineConfig(
-  {
-    ignores: ['dist'],
-  },
+  globalIgnores(['dist']),
   {
     linterOptions: {
       reportUnusedDisableDirectives: 'error',
@@ -26,7 +24,6 @@ export default defineConfig(
   eslintJestPlugin.configs['flat/style'],
   pluginPromise.configs['flat/recommended'],
   eslintContainerbase.configs.all,
-  // @ts-expect-error -- wrong types
   importX.flatConfigs.recommended,
   // importX.flatConfigs.typescript,
   eslintConfigPrettier,
