@@ -4,12 +4,12 @@ import js from '@eslint/js';
 import { defineConfig, globalIgnores } from 'eslint/config';
 import tseslint from 'typescript-eslint';
 import pluginPromise from 'eslint-plugin-promise';
-import eslintJestPlugin from 'eslint-plugin-jest';
 import eslintContainerbase from '@containerbase/eslint-plugin';
 import eslintConfigPrettier from 'eslint-config-prettier';
 import { createTypeScriptImportResolver } from 'eslint-import-resolver-typescript';
 import * as importX from 'eslint-plugin-import-x';
 import globals from 'globals';
+import vitest from '@vitest/eslint-plugin';
 
 export default defineConfig(
   globalIgnores(['dist']),
@@ -20,8 +20,7 @@ export default defineConfig(
   },
   js.configs.recommended,
   ...tseslint.configs.recommended,
-  eslintJestPlugin.configs['flat/recommended'],
-  eslintJestPlugin.configs['flat/style'],
+  vitest.configs.recommended,
   pluginPromise.configs['flat/recommended'],
   eslintContainerbase.configs.all,
   importX.flatConfigs.recommended,
@@ -46,6 +45,15 @@ export default defineConfig(
 
     settings: {
       'import-x/resolver-next': [createTypeScriptImportResolver()],
+    },
+  },
+  {
+    files: ['src/**/*.spec.ts'],
+
+    languageOptions: {
+      globals: {
+        ...globals.vitest,
+      },
     },
   },
 );

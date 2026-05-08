@@ -7,12 +7,8 @@
     "noImplicitAny": true,
     "strictNullChecks": true,
     "moduleResolution": null,
-    "declaration": true
+    "declaration": true,
+    "types": ["vitest/globals"]
   },
-  "ts-node": {
-    "transpileOnly": true,
-    "esm": false,
-    "swc": true
-  },
-  "exclude": ["dist", "src/**/*.spec.ts", "src/test-utils.ts"]
+  "exclude": ["dist"]
 }

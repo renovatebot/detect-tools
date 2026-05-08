@@ -3,11 +3,11 @@ import * as fs from '../fs';
 import * as pipenv from './pipenv';
 import { mockFs } from '../test-utils';
 
-jest.mock('../fs');
+vi.mock('../fs');
 
 describe('manager/pipenv', () => {
   beforeEach(() => {
-    jest.clearAllMocks();
+    vi.clearAllMocks();
   });
 
   describe('getPythonConstraint', () => {
