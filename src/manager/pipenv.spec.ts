@@ -1,7 +1,7 @@
 import { codeBlock } from 'common-tags';
-import * as fs from '../fs';
-import * as pipenv from './pipenv';
-import { mockFs } from '../test-utils';
+import * as fs from '../fs.ts';
+import * as pipenv from './pipenv.ts';
+import { mockFs } from '../test-utils.ts';
 
 vi.mock('../fs');
 

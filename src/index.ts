@@ -1,1 +1,1 @@
-export * as pipenv from './manager/pipenv';
+export * as pipenv from './manager/pipenv.ts';

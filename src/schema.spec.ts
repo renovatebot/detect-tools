@@ -1,4 +1,4 @@
-import { Json, Toml } from './schema';
+import { Json, Toml } from './schema.ts';
 
 describe('schema', () => {
   it('throws invalid json', async () => {

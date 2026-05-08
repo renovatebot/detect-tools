@@ -1,4 +1,4 @@
-import { readFile } from './fs';
+import { readFile } from './fs.ts';
 
 describe('fs', () => {
   it('returns null for non-exitent file', async () => {

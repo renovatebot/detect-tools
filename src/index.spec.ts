@@ -1,4 +1,4 @@
-import * as m from '.';
+import * as m from './index.ts';
 
 describe('index', () => {
   it('works', () => {
