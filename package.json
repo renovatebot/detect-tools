@@ -1,16 +1,19 @@
 {
   "name": "@renovatebot/detect-tools",
   "version": "0.0.0-semantic-release",
-  "license": "AGPL-3.0-only",
-  "type": "module",
-  "main": "dist/index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/renovatebot/detect-tools.git"
   },
+  "license": "AGPL-3.0-only",
+  "type": "module",
+  "main": "dist/index.js",
+  "files": [
+    "/dist"
+  ],
   "scripts": {
-    "clean": "rimraf dist",
     "build": "tsc -b ./tsconfig.lib.json",
+    "clean": "rimraf dist",
     "prettier": "PRETTIER_EXPERIMENTAL_CLI=1 prettier -c -u .",
     "prettier:fix": "PRETTIER_EXPERIMENTAL_CLI=1 prettier -w -u .",
     "test": "vitest run"
