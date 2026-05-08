@@ -80,7 +80,7 @@ jobs:
           node-version: ${{ matrix.node }}
 
       - name: Test
-        run: pnpm test --ci --coverage ${{ env.coverage }} --logHeapUsage
+        run: pnpm test --coverage ${{ env.coverage }} --logHeapUsage
         shell: bash
 
       - name: Codecov test results
