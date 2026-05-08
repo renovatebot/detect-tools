@@ -3,7 +3,7 @@ import * as fs from '../fs.ts';
 import * as pipenv from './pipenv.ts';
 import { mockFs } from '../test-utils.ts';
 
-vi.mock('../fs');
+vi.mock('../fs.ts');
 
 describe('manager/pipenv', () => {
   beforeEach(() => {
