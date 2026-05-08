@@ -13,7 +13,8 @@ export const Json = z.string().transform((str, ctx): JsonValue => {
 
 export const Toml = z.string().transform((str, ctx): unknown => {
   try {
-    const ast = parseTOML(str);
+    // toml-eslint-parser v4 parses as toml v1.1
+    const ast = parseTOML(str, { tomlVersion: '1.0' });
     const res = getStaticTOMLValue(ast);
     return res;
   } catch {
