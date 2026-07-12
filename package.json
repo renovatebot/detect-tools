@@ -21,7 +21,7 @@
   "dependencies": {
     "fs-extra": "^11.3.6",
     "toml-eslint-parser": "^1.0.3",
-    "upath": "^3.0.7",
+    "upath": "^3.0.8",
     "zod": "^4.4.3"
   },
   "devDependencies": {
