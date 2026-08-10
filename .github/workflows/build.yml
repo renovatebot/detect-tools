@@ -37,7 +37,7 @@ jobs:
     runs-on: ubuntu-24.04
 
     steps:
-      - uses: containerbase/internal-tools/setup@b469ae85fda86ed76b9328042083cdc30a4f0246 # v5.0.5
+      - uses: containerbase/internal-tools/setup@b7711d0ee5abd37346644605152f053807299ff6 # v5.0.7
         with:
           save-cache: true
 
@@ -74,7 +74,7 @@ jobs:
       coverage: ${{ matrix.os == 'ubuntu' && matrix.node == 22 }}
 
     steps:
-      - uses: containerbase/internal-tools/setup@b469ae85fda86ed76b9328042083cdc30a4f0246 # v5.0.5
+      - uses: containerbase/internal-tools/setup@b7711d0ee5abd37346644605152f053807299ff6 # v5.0.7
         with:
           save-cache: true
           node-version: ${{ matrix.node }}
@@ -140,7 +140,7 @@ jobs:
           filter: blob:none # we don't need all blobs, only the full tree
           show-progress: false
 
-      - uses: containerbase/internal-tools/setup@b469ae85fda86ed76b9328042083cdc30a4f0246 # v5.0.5
+      - uses: containerbase/internal-tools/setup@b7711d0ee5abd37346644605152f053807299ff6 # v5.0.7
         with:
           checkout: false
 
