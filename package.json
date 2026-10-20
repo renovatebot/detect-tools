@@ -22,7 +22,7 @@
     "fs-extra": "^11.4.1",
     "toml-eslint-parser": "^1.0.3",
     "upath": "^3.0.8",
-    "zod": "^4.6.6"
+    "zod": "^4.6.7"
   },
   "devDependencies": {
     "@containerbase/eslint-plugin": "3.0.0",
