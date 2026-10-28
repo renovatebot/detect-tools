@@ -1,6 +1,6 @@
 import { z } from 'zod/v3';
-import { Json, Toml } from '../schema.ts';
 import { readFile } from '../fs.ts';
+import { Json, Toml } from '../schema.ts';
 
 const PythonConstraintObject = z
   .object({

@@ -1,10 +1,10 @@
 import { Json, Toml } from './schema.ts';
 
 describe('schema', () => {
-  it('throws invalid json', async () => {
+  it('throws invalid json', () => {
     expect(() => Json.parse('{')).toThrow();
   });
-  it('throws invalid toml', async () => {
+  it('throws invalid toml', () => {
     expect(() => Toml.parse('{')).toThrow();
   });
 });

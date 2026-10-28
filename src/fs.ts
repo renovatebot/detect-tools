@@ -1,5 +1,5 @@
-import { join } from 'upath';
 import fs from 'fs-extra';
+import { join } from 'upath';
 
 export async function readFile(
   path: string,

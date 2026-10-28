@@ -9,7 +9,7 @@ export function mockFs(
 
   const readFile = (path: string, file: string): Promise<string | null> => {
     const fullPath = `${path}/${file}`;
-    const res = fsData.get(fullPath) || null;
+    const res = fsData.get(fullPath) ?? null;
     return Promise.resolve(res);
   };
 

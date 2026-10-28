@@ -1,6 +1,6 @@
-import { JsonValue } from 'type-fest';
-import { z } from 'zod/v3';
 import { getStaticTOMLValue, parseTOML } from 'toml-eslint-parser';
+import type { JsonValue } from 'type-fest';
+import { z } from 'zod/v3';
 
 export const Json = z.string().transform((str, ctx): JsonValue => {
   try {
