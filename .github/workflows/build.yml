@@ -24,6 +24,10 @@ on:
         default: 'true'
         required: false
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.number || github.ref_name }}
+  cancel-in-progress: ${{ github.ref_name != github.event.repository.default_branch && !startsWith(github.ref_name, 'maint/') }}
+
 env:
   # are we on a release branch?
   DO_REALEASE: ${{ github.ref_name == github.event.repository.default_branch || github.ref_name == 'next' || startsWith(github.ref_name, 'maint/')}}
@@ -35,6 +39,7 @@ permissions:
 jobs:
   lint:
     runs-on: ubuntu-24.04
+    timeout-minutes: 15
 
     steps:
       - uses: containerbase/internal-tools/setup@2082203142ae62859ac4a86919258077c6460403 # v5.3.12
@@ -62,6 +67,7 @@ jobs:
             node: 26
 
     runs-on: ${{ matrix.os }}-latest
+    timeout-minutes: 30
 
     name: test-${{ matrix.os }}-${{ matrix.node }}
 
@@ -78,7 +84,7 @@ jobs:
           node-version: ${{ matrix.node }}
 
       - name: Test
-        run: pnpm test --coverage ${{ env.coverage }} --logHeapUsage
+        run: pnpm test --coverage "${coverage}" --logHeapUsage
         shell: bash
 
       - name: Codecov test results
@@ -134,6 +140,7 @@ jobs:
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
+          persist-credentials: false # semantic-release pushes with its own token
           fetch-depth: 0 # zero stands for full checkout, which is required for semantic-release
           filter: blob:none # we don't need all blobs, only the full tree
           show-progress: false
@@ -144,16 +151,18 @@ jobs:
 
       - name: Check dry run
         run: |
-          if [[ "${{github.event_name}}" == "workflow_dispatch" && "${{ github.event.inputs.dryRun }}" != "true"  ]]; then
+          if [[ "${GITHUB_EVENT_NAME}" == "workflow_dispatch" && "${DRY_RUN_INPUT}" != "true" ]]; then
             echo "DRY_RUN=false" >> "$GITHUB_ENV"
-          elif [[ "${{env.DO_REALEASE}}" == "true" ]]; then
+          elif [[ "${DO_REALEASE}" == "true" ]]; then
             echo "DRY_RUN=false" >> "$GITHUB_ENV"
           fi
+        env:
+          DRY_RUN_INPUT: ${{ github.event.inputs.dryRun }}
 
       - run: pnpm build
 
       - name: semantic-release
         run: |
-          pnpm semantic-release --dry-run ${{env.DRY_RUN}}
+          pnpm semantic-release --dry-run "${DRY_RUN}"
         env:
           GITHUB_TOKEN: ${{ github.token }}
