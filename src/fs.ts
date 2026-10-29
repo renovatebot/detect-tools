@@ -1,10 +1,7 @@
 import fs from 'fs-extra';
 import { join } from 'upath';
 
-export async function readFile(
-  path: string,
-  file: string,
-): Promise<string | null> {
+export async function readFile(path: string, file: string): Promise<string | null> {
   try {
     const fullPath = join(path, file);
     return await fs.readFile(fullPath, 'utf8');

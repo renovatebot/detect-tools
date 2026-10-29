@@ -26,10 +26,7 @@ const PythonConstraintObject = z
   })
   .transform(
     ({
-      requires: {
-        python_version: pythonVersion,
-        python_full_version: pythonFullVersion,
-      },
+      requires: { python_version: pythonVersion, python_full_version: pythonFullVersion },
       packages: { pipenv: pipenvDefault },
       'dev-packages': { pipenv: pipenvDevelop },
     }) => ({
@@ -66,9 +63,7 @@ const PythonConstraint = z
     return null;
   });
 
-const PipfilePythonVersion = Toml.pipe(PythonConstraintObject)
-  .pipe(PythonConstraint)
-  .catch(null);
+const PipfilePythonVersion = Toml.pipe(PythonConstraintObject).pipe(PythonConstraint).catch(null);
 
 const PipenvConstraintObject = z
   .object({
@@ -110,46 +105,44 @@ const PipenvConstraint = z
     pipenvDefault: z.string().nullable(),
     pipenvDevelop: z.string().nullable(),
   })
-  .transform(
-    ({ pythonVersion, pythonFullVersion, pipenvDefault, pipenvDevelop }) => {
-      if (pipenvDefault) {
-        return pipenvDefault;
-      }
+  .transform(({ pythonVersion, pythonFullVersion, pipenvDefault, pipenvDevelop }) => {
+    if (pipenvDefault) {
+      return pipenvDefault;
+    }
 
-      if (pipenvDevelop) {
-        return pipenvDevelop;
-      }
+    if (pipenvDevelop) {
+      return pipenvDevelop;
+    }
 
-      // Exact python version has been included since 2022.10.9
-      if (pythonFullVersion) {
-        // python_full_version was added after 3.6 was already deprecated, so it should be impossible to have a 3.6 version
-        // https://github.com/pypa/pipenv/blob/main/CHANGELOG.md#2022109-2022-10-09
-        /* istanbul ignore else */
-        if (pythonFullVersion.startsWith('3.7.')) {
-          // Python 3.7 support was dropped in pipenv 2023.10.20
-          // https://github.com/pypa/pipenv/blob/main/CHANGELOG.md#20231020-2023-10-20
-          return '< 2023.10.20';
-        }
-      }
-
-      // Before 2022.10.9, only the major.minor version was included
+    // Exact python version has been included since 2022.10.9
+    if (pythonFullVersion) {
+      // python_full_version was added after 3.6 was already deprecated, so it should be impossible to have a 3.6 version
+      // https://github.com/pypa/pipenv/blob/main/CHANGELOG.md#2022109-2022-10-09
       /* istanbul ignore else */
-      if (pythonVersion) {
-        if (pythonVersion === '3.6') {
-          // Python 3.6 was deprecated in 2022.4.20
-          // https://github.com/pypa/pipenv/blob/main/CHANGELOG.md#2022420-2022-04-20
-          return '< 2022.4.20';
-        }
-        if (pythonVersion === '3.7') {
-          // Python 3.7 was deprecated in 2023.10.20 but we shouldn't reach here unless we are < 2022.10.9
-          // https://github.com/pypa/pipenv/blob/main/CHANGELOG.md#20231020-2023-10-20
-          return '< 2022.10.9';
-        }
+      if (pythonFullVersion.startsWith('3.7.')) {
+        // Python 3.7 support was dropped in pipenv 2023.10.20
+        // https://github.com/pypa/pipenv/blob/main/CHANGELOG.md#20231020-2023-10-20
+        return '< 2023.10.20';
       }
+    }
 
-      return null;
-    },
-  )
+    // Before 2022.10.9, only the major.minor version was included
+    /* istanbul ignore else */
+    if (pythonVersion) {
+      if (pythonVersion === '3.6') {
+        // Python 3.6 was deprecated in 2022.4.20
+        // https://github.com/pypa/pipenv/blob/main/CHANGELOG.md#2022420-2022-04-20
+        return '< 2022.4.20';
+      }
+      if (pythonVersion === '3.7') {
+        // Python 3.7 was deprecated in 2023.10.20 but we shouldn't reach here unless we are < 2022.10.9
+        // https://github.com/pypa/pipenv/blob/main/CHANGELOG.md#20231020-2023-10-20
+        return '< 2022.10.9';
+      }
+    }
+
+    return null;
+  })
   .nullable()
   .catch(null);
 
@@ -157,9 +150,7 @@ const PipfilePipenvConstraint = Toml.pipe(PythonConstraintObject)
   .pipe(PipenvConstraint)
   .catch(null);
 
-export async function getPythonConstraint(
-  path: string,
-): Promise<string | undefined> {
+export async function getPythonConstraint(path: string): Promise<string | undefined> {
   const pipfileContent = await readFile(path, 'Pipfile');
   const pipfileVersion = PipfilePythonVersion.parse(pipfileContent);
   if (pipfileVersion) {
@@ -167,8 +158,7 @@ export async function getPythonConstraint(
   }
 
   const lockfileContent = await readFile(path, 'Pipfile.lock');
-  const lockfileVersion =
-    PipfileLock.pipe(PythonConstraint).parse(lockfileContent);
+  const lockfileVersion = PipfileLock.pipe(PythonConstraint).parse(lockfileContent);
   if (lockfileVersion) {
     return lockfileVersion;
   }
@@ -193,8 +183,7 @@ export async function getPipenvConstraint(path: string): Promise<string> {
   }
 
   const lockfileContent = await readFile(path, 'Pipfile.lock');
-  const pipenvLockfileConstraint =
-    PipfileLock.pipe(PipenvConstraint).parse(lockfileContent);
+  const pipenvLockfileConstraint = PipfileLock.pipe(PipenvConstraint).parse(lockfileContent);
   if (pipenvLockfileConstraint) {
     return pipenvLockfileConstraint;
   }
