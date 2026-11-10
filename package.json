@@ -38,7 +38,7 @@
     "common-tags": "1.8.2",
     "conventional-changelog-conventionalcommits": "9.3.1",
     "npm-run-all2": "9.0.4",
-    "oxfmt": "0.75.0",
+    "oxfmt": "0.76.0",
     "oxlint": "1.90.0",
     "oxlint-tsgolint": "7.0.2005",
     "rimraf": "6.1.3",
