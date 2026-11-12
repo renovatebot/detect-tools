@@ -44,7 +44,7 @@ jobs:
       MISE_EXEC_AUTO_INSTALL: 'false'
 
     steps:
-      - uses: containerbase/internal-tools/setup@f7e8ff4a2721149f4f6a8d387a4b2279bb78364a # v5.4.8
+      - uses: containerbase/internal-tools/setup@0180b2cc75e66c7043731f3c050c9e00bf47d030 # v5.4.10
         with:
           save-cache: true
 
@@ -93,7 +93,7 @@ jobs:
       coverage: ${{ matrix.os == 'ubuntu' && matrix.node == 24 }}
 
     steps:
-      - uses: containerbase/internal-tools/setup@f7e8ff4a2721149f4f6a8d387a4b2279bb78364a # v5.4.8
+      - uses: containerbase/internal-tools/setup@0180b2cc75e66c7043731f3c050c9e00bf47d030 # v5.4.10
         with:
           save-cache: true
           node-version: ${{ matrix.node }}
@@ -160,7 +160,7 @@ jobs:
           filter: blob:none # we don't need all blobs, only the full tree
           show-progress: false
 
-      - uses: containerbase/internal-tools/setup@f7e8ff4a2721149f4f6a8d387a4b2279bb78364a # v5.4.8
+      - uses: containerbase/internal-tools/setup@0180b2cc75e66c7043731f3c050c9e00bf47d030 # v5.4.10
         with:
           checkout: false
 
